@@ -1,0 +1,33 @@
+/* Basic styling for the application */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+}
+
+input, select {
+    padding: 5px;
+    margin: 5px 0;
+}
+
+button {
+    padding: 5px 10px;
+}
+
+#add-trip-result, #schedule-result {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
