@@ -25,7 +25,7 @@ $stmt->execute([$filter_date]);
 $trips = $stmt->fetchAll();
 
 if (!$trips) {
-    echo "No trips found for " . htmlspecialchars($filter_date);
+    echo "Поездки не найдены на " . htmlspecialchars($filter_date);
     exit;
 }
 
