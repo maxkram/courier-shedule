@@ -1,5 +1,6 @@
 USE courier_schedule;
 
+-- Вставка данных в таблицу регионов
 INSERT INTO regions (name, travel_duration) VALUES 
 ('Saint Petersburg', 2),
 ('Ufa', 3),
@@ -10,8 +11,10 @@ INSERT INTO regions (name, travel_duration) VALUES
 ('Kovrov', 1),
 ('Voronezh', 2),
 ('Samara', 3),
-('Astrakhan', 5);
+('Astrakhan', 5)
+ON DUPLICATE KEY UPDATE name = name;
 
+-- Вставка данных в таблицу курьеров
 INSERT INTO couriers (full_name) VALUES
 ('Amina Safina'),
 ('Amir Shakirov'),
@@ -22,8 +25,10 @@ INSERT INTO couriers (full_name) VALUES
 ('Diana Ibragimova'),
 ('Artem Khasanov'),
 ('Alisa Sabirova'),
-('Matvey Valeev');
+('Matvey Valeev')
+ON DUPLICATE KEY UPDATE full_name = full_name;
 
+-- Вставка данных в таблицу поездок
 INSERT INTO trips (courier_id, region_id, departure_date, arrival_date) VALUES
 (1, 1, '2025-03-01', DATE_ADD('2025-03-01', INTERVAL (SELECT travel_duration FROM regions WHERE id = 1) DAY)),
 (2, 2, '2025-03-05', DATE_ADD('2025-03-05', INTERVAL (SELECT travel_duration FROM regions WHERE id = 2) DAY)),

@@ -2,13 +2,17 @@
 
 require_once 'db.php';
 
+header('Content-Type: text/html; charset=utf-8');
+
 $filter_date = isset($_GET['date']) ? $_GET['date'] : '';
 
 if (!$filter_date) {
+    http_response_code(400);
     echo "No date specified.";
     exit;
 }
 
+// Получение данных о поездках
 $stmt = $pdo->prepare("
     SELECT t.*, c.full_name, r.name AS region_name 
     FROM trips t
@@ -25,6 +29,7 @@ if (!$trips) {
     exit;
 }
 
+// Вывод данных в виде таблицы
 echo "<h3>Trips for " . htmlspecialchars($filter_date) . ":</h3>";
 echo "<table border='1' cellpadding='5'>";
 echo "<tr>
