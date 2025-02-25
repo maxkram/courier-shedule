@@ -1,5 +1,4 @@
 <?php
-// Returns an HTML table with trips for the specified date (filter by departure_date).
 
 require_once 'db.php';
 
@@ -10,7 +9,6 @@ if (!$filter_date) {
     exit;
 }
 
-// Query trips where the departure date matches the selected filter date
 $stmt = $pdo->prepare("
     SELECT t.*, c.full_name, r.name AS region_name 
     FROM trips t
